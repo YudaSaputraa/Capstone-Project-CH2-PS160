@@ -40,6 +40,7 @@ const newBidProduct = async (req, res) => {
     try {
         const { bid_price, count } = req.body;
         const { id_product } = req.params;
+        const status = 'Approve';
         const product = await products.findOne({
             where: {
                 id: id_product
@@ -52,12 +53,14 @@ const newBidProduct = async (req, res) => {
                 message: `Product with id ${id_product} does not exist!`
             });
         }
-
+        const total_price = product.price * count;
         if (product.id == id_product) {
             const newBidRequest = await product_details.create({
                 bid_price,
                 count,
-                id_product,
+                total_price,
+                status: status,
+                productId: id_product,
             })
             res.status(201).json({
                 status: "success",

@@ -22,6 +22,10 @@ const Product_Detail = my_db.define("product_detail", {
         type: sequelize.INTEGER,
         allowNull: true,
     },
+    status: {
+        type: sequelize.STRING,
+        allowNull: true,
+    }
 
 })
 

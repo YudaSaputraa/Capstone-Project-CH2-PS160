@@ -7,7 +7,7 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 
 app.use(express.json());
-app.use(userRoutes);
+app.use(userRoutes)
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
